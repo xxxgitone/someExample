@@ -9,13 +9,44 @@
 <body>
   <script src="./promise.js"></script>
   <script>
-    new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve('d')
-      }, 1000)
-    }).then(res => {
+    // new Promise(function (resolve, reject) {
+    //   resolve('d')
+    //   Promise.resolve('dd').then(res => console.log(res))
+    // }).then(function (res) {
+    //   console.log(res)
+    // })
+
+    Promise.all([Promise.resolve('dd'), Promise.resolve('d')]).then(res => {
       console.log(res)
     })
+
+    // new Promise((resolve, reject) => {
+    //   // setTimeout(() => {
+    //     resolve('d')
+    //   // }, 1000)
+    // }).then(res => {
+    //   console.log(res)
+    // })
+
+    // 2.值穿透
+    // new Promise(resolve=>resolve(8))
+    //   .then()
+    //   .then()
+    //   .then(function foo(value) {
+    //     alert(value)
+    //   })
+
+    //类似上面2
+    // new Promise(resolve=>resolve(8))
+    //   .then(function(value){
+    //     return value
+    //   })
+    //   .catch(function(reason){
+    //     throw reason
+    //   })
+    //   .then(function(value) {
+    //     alert(value)
+    //   })
   </script>
 </body>
 </html>
